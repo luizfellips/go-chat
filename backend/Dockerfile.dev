@@ -1,0 +1,16 @@
+FROM golang:1.23-alpine
+
+RUN apk add --no-cache git ca-certificates wget
+
+WORKDIR /app
+
+COPY go.mod ./
+RUN go mod download
+
+COPY . .
+
+RUN go install github.com/air-verse/air@v1.61.7
+
+EXPOSE 8080
+
+CMD ["sh", "-c", "go run ./cmd/server migrate && go run ./cmd/server seed || true && air -c .air.toml"]

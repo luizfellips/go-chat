@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-background: oklch(98% 0 0);
+  --color-foreground: oklch(20% 0 0);
+  --color-card: oklch(100% 0 0);
+  --color-muted: oklch(94% 0 0);
+  --color-muted-foreground: oklch(45% 0 0);
+  --color-primary: oklch(55% 0.18 260);
+  --color-primary-foreground: oklch(98% 0 0);
+  --color-border: oklch(88% 0 0);
+  --color-sidebar: oklch(96% 0 0);
+  --color-chat: oklch(99% 0 0);
+}
+
+.dark {
+  --color-background: oklch(18% 0.01 260);
+  --color-foreground: oklch(95% 0 0);
+  --color-card: oklch(22% 0.01 260);
+  --color-muted: oklch(28% 0.01 260);
+  --color-muted-foreground: oklch(70% 0 0);
+  --color-primary: oklch(65% 0.18 260);
+  --color-primary-foreground: oklch(98% 0 0);
+  --color-border: oklch(32% 0.01 260);
+  --color-sidebar: oklch(20% 0.01 260);
+  --color-chat: oklch(16% 0.01 260);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  overflow: hidden;
+}
+
+#root {
+  height: 100dvh;
+  min-height: 100vh;
+}
+
+.safe-bottom {
+  padding-bottom: max(0.75rem, env(safe-area-inset-bottom));
+}
